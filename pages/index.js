@@ -1,15 +1,14 @@
-import Container from '@/components/container'
-import MoreStories from '@/components/more-stories'
-import HeroPost from '@/components/hero-post'
-import Layout from '@/components/layout'
-import { getAllPostsForHome } from '@/lib/api'
-import Head from 'next/head'
-import Header from '@/components/header'
-
+import Container from "@/components/container";
+import MoreStories from "@/components/more-stories";
+import HeroPost from "@/components/hero-post";
+import Layout from "@/components/layout";
+import { getAllPostsForHome } from "@/lib/api";
+import Head from "next/head";
+import Header from "@/components/header";
 
 export default function Index({ allPosts, preview }) {
-  const heroPost = allPosts[0]
-  const morePosts = allPosts.slice(1)
+  const heroPost = allPosts[0];
+  const morePosts = allPosts.slice(1);
   return (
     <>
       <Layout preview={preview}>
@@ -17,7 +16,7 @@ export default function Index({ allPosts, preview }) {
           <title>Ryan's Journey</title>
         </Head>
         <Container>
-        <Header />
+          <Header />
           {heroPost && (
             <HeroPost
               title={heroPost.title}
@@ -32,12 +31,12 @@ export default function Index({ allPosts, preview }) {
         </Container>
       </Layout>
     </>
-  )
+  );
 }
 
 export async function getStaticProps({ preview = null }) {
-  const allPosts = (await getAllPostsForHome(preview)) || []
+  const allPosts = (await getAllPostsForHome(preview)) || [];
   return {
     props: { allPosts, preview },
-  }
+  };
 }

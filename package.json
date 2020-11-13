@@ -17,9 +17,21 @@
     "remark-html": "11.0.2"
   },
   "devDependencies": {
+    "husky": ">=4",
+    "lint-staged": ">=10",
     "postcss-flexbugs-fixes": "4.2.1",
     "postcss-preset-env": "^6.7.0",
+    "prettier": "^2.1.2",
     "tailwindcss": "^1.4.6"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown",
+    "*.{js,css,md}": "prettier --write"
+  }
 }
